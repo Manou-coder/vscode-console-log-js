@@ -1,5 +1,6 @@
 {
   "name": "console-log-js",
+  "icon": "images/console-log-js.png",
   "displayName": "console-log-js",
   "publisher": "mcoder",
   "repository": {
