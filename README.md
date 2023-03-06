@@ -1,29 +1,40 @@
-#console-log-js
-Easily insert and remove console.log statements, by @whtouche
+# console-log-js
 
+Easily insert and comment console.log statements, by [M-coder](https://github.com/Manou-coder).
 
+It's true, there are already a lot of extensions to write console.logs quickly and I have used some.
+However, as I used it I felt a need to add some small features so that the extension suited me perfectly.
 
-Installing
-This extension is available for free in the Visual Studio Code Marketplace
+Here are some of the available features:
+- writes a console.log just by placing the cursor on the word (without needing to select it).
+- automatically detects if the file is encoded with semicolons.
+- manages the indentation in an optimized way (a bit complicated to explain in one line but do the experiment)
+- if you select an object with its square brackets, then the extension will write a separate console.log for each of them. This is also valid for an array. (the coolest feature in my opinion)
+- allows to comment all console.log of a file with only one keyboard shortcut (the number of console log comments will be displayed)
+- if the cursor is not placed on text then it will simply write "console.log()"
 
-Usage
-With selection:
+**Sample with variables:**
+![Sample with variables](https://user-images.githubusercontent.com/102325816/223101948-05cac817-fbff-4e7e-848a-28627e6ca2aa.gif)
 
-Highlight a variable (or really any text)
+**Sample with object:**
+![Sample with object](https://user-images.githubusercontent.com/102325816/223102960-a4083027-b018-4676-86c1-7f0317b93aab.gif)
+
+## Installing
+This extension is available for free in the Visual Studio Code Marketplace.
+
+## Usage
+
+With cursor over the word or selection:
 Press Cmd+Shift+L
 The output (on a new line) will be: console.log('variable: ', variable);
-Without selection:
 
+Without selection:
 Press Cmd+Shift+L
 The output (on the same line) will be: console.log();
-To remove console.logs:
 
+To comment console.logs:
 Press Cmd+Shift+D
-This will delete all console.log statements in the current document
-To Do
-Add support for other console.* methods (warn, error, time, timeEnd, etc)
-Add ability to delete console.* across project (currently just the open file)
-When deleting console.*, report how many were deleted, across how many files
-Allow configuration to only delete certain types of console.* statements
+This will comment all console.log statements in the current document
+
 License
 MIT License
