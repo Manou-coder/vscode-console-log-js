@@ -12,29 +12,29 @@ Here are some of the available features:
 - if you select an object with its square brackets, then the extension will write a separate console.log for each of them. This is also valid for an array. (the coolest feature in my opinion)
 - allows to comment all console.log of a file with only one keyboard shortcut (the number of console log comments will be displayed)
 - if the cursor is not placed on text then it will simply write "console.log()"
+<br/>
+<br/>
 
 **Sample with variables:**
 ![Sample with variables](https://user-images.githubusercontent.com/102325816/223101948-05cac817-fbff-4e7e-848a-28627e6ca2aa.gif)
+
+<br/>
+<br/>
 
 **Sample with object:**
 ![Sample with object](https://user-images.githubusercontent.com/102325816/223102960-a4083027-b018-4676-86c1-7f0317b93aab.gif)
 
 ## Installing
 This extension is available for free in the Visual Studio Code Marketplace.
-
 ## Usage
+##### With cursor over the word or selection:
+Press **Cmd+Shift+L** => The output (on a new line) will be: console.log('variable: ', variable);
 
-With cursor over the word or selection:
-Press Cmd+Shift+L
-The output (on a new line) will be: console.log('variable: ', variable);
+##### Without selection:
+Press **Cmd+Shift+L** => The output (on the same line) will be: console.log();
 
-Without selection:
-Press Cmd+Shift+L
-The output (on the same line) will be: console.log();
+##### comment console.logs:
+Press **Cmd+Shift+D** => This will comment all console.log statements in the current document
 
-To comment console.logs:
-Press Cmd+Shift+D
-This will comment all console.log statements in the current document
-
-License
+## License
 MIT License
