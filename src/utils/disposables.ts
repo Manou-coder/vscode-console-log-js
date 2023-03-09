@@ -82,13 +82,8 @@ export const writeConsoleLog = () => {
 }
 
 export const commentConsoleLogs = () => {
-  const editor = vscode.window.activeTextEditor
-  if (!editor) {
-    return
-  }
-  if (!isJsFile(editor)) {
-    return
-  }
+  const editor = checkIsEditorOpenAndIfIsJsFile(vscode.window.activeTextEditor)
+  if (!editor) return
   const document = editor.document
   let count = 0
   editor.edit((editBuilder) => {
@@ -110,13 +105,8 @@ export const commentConsoleLogs = () => {
 }
 
 const removeConsoleLogs = () => {
-  const editor = vscode.window.activeTextEditor
-  if (!editor) {
-    return
-  }
-  if (!isJsFile(editor)) {
-    return
-  }
+  const editor = checkIsEditorOpenAndIfIsJsFile(vscode.window.activeTextEditor)
+  if (!editor) return
   const document = editor.document
   let count = 0
   editor.edit((editBuilder) => {
