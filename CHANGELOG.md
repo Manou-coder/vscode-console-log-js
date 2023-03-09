@@ -2,11 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.2.1] - 2023-03-09
+## [1.3.0] - 2023-03-09
 
 ### Fixed
 
-- fix bug when using console.log on the first line
+- Fix bug when using console.log on the first line
+
+### Added
+
+- Remove all console.log statements from the current file with the shortcut Cmd+Shift+S or 'Remove all console.log()' command.
 
 ## [1.2.0] - 2023-03-06
 
