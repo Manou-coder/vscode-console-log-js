@@ -57,6 +57,7 @@ export const disposable1 = vscode.commands.registerCommand(
         words[0] = document.getText(wordRange);
       }
       const currentLine = position.line;
+      // console.log('currentLine: ', currentLine);
       const indent = getIndent(document, position);
       console.log('indent: ', indent);
 
@@ -138,34 +139,10 @@ export const getIndent = (
   document: vscode.TextDocument,
   position: vscode.Position
 ) => {
-  let newLine: vscode.TextLine | null = null;
-  let nextLine = position.line + 1;
-  while (
-    nextLine < document.lineCount &&
-    !document.lineAt(nextLine).text.trim()
-  ) {
-    nextLine++;
-  }
-  const nextLineContent =
-    nextLine < document.lineCount ? document.lineAt(nextLine) : null;
-  const firstCharacterIndex = nextLineContent?.firstNonWhitespaceCharacterIndex;
-  const firstCharacter =
-    nextLineContent?.text[firstCharacterIndex ? firstCharacterIndex : 0];
-  const isFirstCharacterAlphabetic = firstCharacter?.match(/\w+/i);
-  if (isFirstCharacterAlphabetic) {
-    newLine = nextLineContent;
-  } else {
-    let previousLine = position.line;
-    while (
-      previousLine < document.lineCount &&
-      !document.lineAt(previousLine).text.trim()
-    ) {
-      previousLine--;
-    }
-    const previousLineContent = document.lineAt(previousLine);
-    newLine = previousLineContent;
-  }
-  const indentMatch = newLine?.text.match(/^\s*/);
+  const currentLine = position.line;
+  console.log('currentLine: ', currentLine);
+  const currentLineContent = document.lineAt(currentLine);
+  const indentMatch = currentLineContent.text.match(/^\s*/);
   const indent = indentMatch ? indentMatch[0] : '';
   return indent;
 };
