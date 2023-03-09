@@ -1,9 +1,14 @@
 {
   "name": "console-log-js",
+  "icon": "images/console-log-js.png",
   "displayName": "console-log-js",
   "publisher": "mcoder",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Manou-coder/vscode-console-log-js"
+  },
   "description": "console log faster",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "engines": {
     "vscode": "^1.76.0"
   },

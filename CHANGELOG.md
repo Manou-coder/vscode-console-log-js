@@ -1,9 +1,20 @@
 # Change Log
 
-All notable changes to the "console-log-js" extension will be documented in this file.
+All notable changes to this project will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## [1.2.1] - 2023-03-09
 
-## [Unreleased]
+### Fixed
 
-- Initial release
+- fix bug when using console.log on the first line
+
+## [1.2.0] - 2023-03-06
+
+### Added
+
+- README file
+- others
+
+## [1.0.0] - 2023-03-06
+
+- Iniitial release
