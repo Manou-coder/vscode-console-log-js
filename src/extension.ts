@@ -1,5 +1,6 @@
 import * as vscode from 'vscode'
 import { extname } from 'path'
+import { getIndent, isFileContainsSemi, isJsFile } from './utils/functions'
 
 export function activate(context: vscode.ExtensionContext) {
   console.log('Congratulations, your extension "console-log-js" is now active!')
@@ -119,27 +120,3 @@ export const disposable2 = vscode.commands.registerCommand(
     commentConsoleLogs()
   }
 )
-
-export const isJsFile = (editor: vscode.TextEditor) => {
-  const filePath = editor.document.uri.fsPath
-  const fileExtension = extname(filePath)
-  const jsExtensions = ['.js', '.jsx', '.ts', '.tsx']
-  return jsExtensions.includes(fileExtension)
-}
-
-export const isFileContainsSemi = (document: vscode.TextDocument) => {
-  const textFile = document.getText()
-  return textFile.includes(';')
-}
-
-export const getIndent = (
-  document: vscode.TextDocument,
-  position: vscode.Position
-) => {
-  const currentLine = position.line
-  console.log('currentLine: ', currentLine)
-  const currentLineContent = document.lineAt(currentLine)
-  const indentMatch = currentLineContent.text.match(/^\s*/)
-  const indent = indentMatch ? indentMatch[0] : ''
-  return indent
-}
