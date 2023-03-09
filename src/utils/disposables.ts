@@ -109,7 +109,7 @@ export const disposable2 = vscode.commands.registerCommand(
 )
 
 export const disposable3 = vscode.commands.registerCommand(
-  'console-log-js.deleteConsoleLog',
+  'console-log-js.removeConsoleLog',
   () => {
     const removeConsoleLogs = () => {
       const editor = vscode.window.activeTextEditor
