@@ -28,8 +28,8 @@
         "title": "Comment console.log()"
       },
       {
-        "command": "console-log-js.deleteConsoleLog",
-        "title": "Delete console.log()"
+        "command": "console-log-js.removeConsoleLog",
+        "title": "Remove all console.log()"
       }
     ],
     "keybindings": [
@@ -44,7 +44,7 @@
         "when": "editorTextFocus"
       },
       {
-        "command": "console-log-js.deleteConsoleLog",
+        "command": "console-log-js.removeConsoleLog",
         "key": "ctrl+shift+s",
         "when": "editorTextFocus"
       }

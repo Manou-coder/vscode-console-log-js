@@ -111,7 +111,7 @@ export const disposable2 = vscode.commands.registerCommand(
 export const disposable3 = vscode.commands.registerCommand(
   'console-log-js.deleteConsoleLog',
   () => {
-    const commentConsoleLogs = () => {
+    const removeConsoleLogs = () => {
       const editor = vscode.window.activeTextEditor
       if (!editor) {
         return
@@ -126,19 +126,15 @@ export const disposable3 = vscode.commands.registerCommand(
           const line = document.lineAt(i)
           if (line.text.includes('console.log')) {
             console.log('line: ', line)
-            const indentationMatch = line.text.match(/^\s*/)
-            const indentation = indentationMatch ? indentationMatch[0] : ''
-            const lineTextTrim = line.text.trim()
-            const commentedLine = `${indentation}// ${lineTextTrim}`
-            editBuilder.replace(line.range, commentedLine)
+            editBuilder.delete(line.rangeIncludingLineBreak)
             count++
           }
         }
       })
       vscode.window.showInformationMessage(
-        `Commented ${count} console.log statements.`
+        `Removed ${count} console.log statements.`
       )
     }
-    commentConsoleLogs()
+    removeConsoleLogs()
   }
 )
