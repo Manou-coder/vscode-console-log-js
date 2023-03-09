@@ -26,6 +26,10 @@
       {
         "command": "console-log-js.commentConsoleLog",
         "title": "Comment console.log()"
+      },
+      {
+        "command": "console-log-js.deleteConsoleLog",
+        "title": "Delete console.log()"
       }
     ],
     "keybindings": [
@@ -37,6 +41,11 @@
       {
         "command": "console-log-js.commentConsoleLog",
         "key": "ctrl+shift+d",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "console-log-js.deleteConsoleLog",
+        "key": "ctrl+shift+s",
         "when": "editorTextFocus"
       }
     ]
