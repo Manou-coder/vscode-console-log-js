@@ -18,9 +18,22 @@ export const getIndent = (
   position: vscode.Position
 ) => {
   const currentLine = position.line
-  console.log('currentLine: ', currentLine)
   const currentLineContent = document.lineAt(currentLine)
   const indentMatch = currentLineContent.text.match(/^\s*/)
   const indent = indentMatch ? indentMatch[0] : ''
   return indent
+}
+
+export const checkIsEditorOpenAndIfIsJsFile = (
+  editor: vscode.TextEditor | undefined
+) => {
+  if (!editor) {
+    vscode.window.showInformationMessage('not editor active')
+    return null
+  }
+  if (!isJsFile(editor)) {
+    vscode.window.showInformationMessage('not js file')
+    return null
+  }
+  return editor
 }
