@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.1] - 2023-03-09
+
+### Fixed
+
+- "Fix bug that removes all 'console.log()' statements, including those that are not located at the beginning of the line."
+
 ## [1.3.0] - 2023-03-09
 
 ### Fixed

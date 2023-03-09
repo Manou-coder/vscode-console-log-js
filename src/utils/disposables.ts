@@ -124,7 +124,11 @@ export const disposable3 = vscode.commands.registerCommand(
       editor.edit((editBuilder) => {
         for (let i = 0; i < document.lineCount; i++) {
           const line = document.lineAt(i)
-          if (line.text.includes('console.log')) {
+          const lineTextTrim = line.text.trim()
+          if (
+            line.text.includes('console.log') &&
+            lineTextTrim.match(/^console/)
+          ) {
             console.log('line: ', line)
             editBuilder.delete(line.rangeIncludingLineBreak)
             count++
