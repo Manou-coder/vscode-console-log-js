@@ -3,7 +3,6 @@ import {
   checkIsEditorOpenAndIfIsJsFile,
   getIndent,
   isFileContainsSemi,
-  isJsFile,
 } from './functions'
 export const disposable1 = vscode.commands.registerCommand(
   'console-log-js.writeConsoleLog',
@@ -57,7 +56,6 @@ export const writeConsoleLog = () => {
     words[0] = document.getText(wordRange)
   }
   const currentLine = position.line
-  // console.log('currentLine: ', currentLine);
   const indent = getIndent(document, position)
 
   const semi = isFileContainsSemi(document) ? ';' : ''
