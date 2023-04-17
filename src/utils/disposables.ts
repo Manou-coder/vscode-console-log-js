@@ -35,6 +35,8 @@ export const writeConsoleLog = () => {
   const selection = editor.selection
   const position = selection.active
   const wordRange = document.getWordRangeAtPosition(position)
+    ? document.getWordRangeAtPosition(position)
+    : document.getWordRangeAtPosition(position, /;/)
   if (!selection.isEmpty) {
     words[0] = document.getText(selection)
     const wordsSelected = document.getText(selection)
@@ -57,25 +59,50 @@ export const writeConsoleLog = () => {
   }
   const currentLine = position.line
   const indent = getIndent(document, position)
-
   const semi = isFileContainsSemi(document) ? ';' : ''
   if (!wordRange && selection.isEmpty) {
     const message = `${indent}console.log()${semi}`
     const newPosition = new vscode.Position(currentLine, 0)
-    editor.edit((editBuilder) => {
-      editBuilder.insert(newPosition, message)
-    })
+    editor
+      // insert text in new position
+      .edit((editBuilder) => {
+        editBuilder.insert(newPosition, message)
+      })
+      // place cursor in new position
+      .then(() => {
+        const newCursorPosition = new vscode.Position(
+          currentLine,
+          semi ? message.length - 2 : message.length - 1
+        )
+        editor.selection = new vscode.Selection(
+          newCursorPosition,
+          newCursorPosition
+        )
+      })
   } else {
-    const newLine = currentLine + 1
-    const newPosition = new vscode.Position(newLine, 0)
+    const indexOfTextEnd = document.lineAt(currentLine).text.length
+    const newPosition = new vscode.Position(currentLine, indexOfTextEnd)
     let message = ''
     for (let i = 0; i < words.length; i++) {
       const word = words[i]
-      message += `${indent}console.log('${word}: ', ${word})${semi}\n`
+      message += `\n${indent}console.log('${word}: ', ${word})${semi}`
     }
-    editor.edit((editBuilder) => {
-      editBuilder.insert(newPosition, message)
-    })
+    editor
+      // insert text in new position
+      .edit((editBuilder) => {
+        editBuilder.insert(newPosition, message)
+      })
+      // place cursor in new position
+      .then(() => {
+        const newCursorPosition = new vscode.Position(
+          newPosition.line + words.length,
+          message.length
+        )
+        editor.selection = new vscode.Selection(
+          newCursorPosition,
+          newCursorPosition
+        )
+      })
   }
 }
 
@@ -91,9 +118,13 @@ export const commentConsoleLogs = () => {
         const indentationMatch = line.text.match(/^\s*/)
         const indentation = indentationMatch ? indentationMatch[0] : ''
         const lineTextTrim = line.text.trim()
-        const commentedLine = `${indentation}// ${lineTextTrim}`
-        editBuilder.replace(line.range, commentedLine)
-        count++
+        console.log('lineTextTrim: ', lineTextTrim)
+        const consoleLogRegex = /^console.log/
+        if (consoleLogRegex.test(lineTextTrim)) {
+          const commentedLine = `${indentation}// ${lineTextTrim}`
+          editBuilder.replace(line.range, commentedLine)
+          count++
+        }
       }
     }
   })
