@@ -118,7 +118,6 @@ export const commentConsoleLogs = () => {
         const indentationMatch = line.text.match(/^\s*/)
         const indentation = indentationMatch ? indentationMatch[0] : ''
         const lineTextTrim = line.text.trim()
-        console.log('lineTextTrim: ', lineTextTrim)
         const consoleLogRegex = /^console.log/
         if (consoleLogRegex.test(lineTextTrim)) {
           const commentedLine = `${indentation}// ${lineTextTrim}`
