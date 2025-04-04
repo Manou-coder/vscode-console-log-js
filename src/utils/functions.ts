@@ -4,7 +4,7 @@ import { extname } from 'path'
 export const isJsFile = (editor: vscode.TextEditor) => {
   const filePath = editor.document.uri.fsPath
   const fileExtension = extname(filePath)
-  const jsExtensions = ['.js', '.jsx', '.ts', '.tsx']
+  const jsExtensions = ['.js', '.jsx', '.ts', '.tsx', '.vue']
   return jsExtensions.includes(fileExtension)
 }
 
